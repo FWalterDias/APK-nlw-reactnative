@@ -1,10 +1,13 @@
-import { View, Image, Text } from "react-native";
+import { View, Image, Text, TouchableOpacity } from "react-native";
+import { Feather } from "@expo/vector-icons"
+import colors from "tailwindcss/colors";
 
 type HeaderProps = {
     title: string
+    cardQuantityItems?: number
 }
 
-export function Header({ title }: HeaderProps) {
+export function Header({ title, cardQuantityItems = 0 }: HeaderProps) {
 
     return (
         <View className="flex-row items-center border-b border-slate-700 pb-5 mx-5">
@@ -16,6 +19,19 @@ export function Header({ title }: HeaderProps) {
                     {title}
                 </Text>
             </View>
+
+            <TouchableOpacity className="relative" activeOpacity={.7}>
+
+                {cardQuantityItems > 0 &&
+                    <View className="bg-lime-300 w-4 h-4 rounded-full items-center justify-center top-2 z-10 -right-3">
+                        <Text className="text-slate-900 font-bold text-xs">
+                            {cardQuantityItems}
+                        </Text>
+                    </View>}
+
+                <Feather name="shopping-bag" color={colors.white} size={24} />
+            </TouchableOpacity>
+
         </View>
     )
 }
