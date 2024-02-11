@@ -2,7 +2,7 @@ import { CategoryButton } from "@/components/category-button";
 import { Header } from "@/components/header";
 import { Product } from "@/components/products";
 import { useCartStore } from "@/stores/cart-store";
-import { CATEGORIES, MENU } from "@/utils/data/products";
+import { CATEGORIES, MENU, ProductProps } from "@/utils/data/products";
 import { Link } from "expo-router";
 import { useState, useRef } from "react";
 import { FlatList, View, SectionList, Text } from "react-native";
@@ -13,9 +13,9 @@ export default function Home() {
 
     const cardquantityItems = cartStore.products.reduce((total, product) => total + product.quantity, 0)
 
-    const [category, setCategory] = useState<string>("");
+    const [category, setCategory] = useState(CATEGORIES[0]);
 
-    const sectionListRef = useRef<SectionList>(null);
+    const sectionListRef = useRef<SectionList<ProductProps>>(null);
 
     function handleCategorySelect(selectedCategory: string) {
         setCategory(selectedCategory)
