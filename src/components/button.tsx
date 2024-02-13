@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
 
-type ButtonProps = TouchableOpacity & {
+type ButtonProps = TouchableOpacityProps & {
     children: ReactNode
 }
 
